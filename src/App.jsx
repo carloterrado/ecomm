@@ -5,6 +5,7 @@ import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 
 const Shop = () => <h1>This is Shop page</h1>
+const Logout = () => <h1>This is Shop page</h1>
 
 const App = () => {
 

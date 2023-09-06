@@ -5,6 +5,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   GoogleAuthProvider,
+  signOut,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -70,7 +72,16 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
     return await signInWithEmailAndPassword(auth, email, password);
   } catch (error) {
-     if(error.code === 'auth/user-not-found') throw new Error('Email Not Found');
-     if(error.code === 'auth/wrong-password') throw new Error('Wrong Password');
+    if (error.code === "auth/user-not-found")
+      throw new Error("Email Not Found");
+    if (error.code === "auth/wrong-password") throw new Error("Wrong Password");
   }
+};
+
+export const signOutUser = async () => await signOut(auth);
+
+export const onAuthStateChangedListener = (callback) => {
+  const authStatus = onAuthStateChanged(auth, callback);
+  // console.log(authStatus)
+  return authStatus;
 };

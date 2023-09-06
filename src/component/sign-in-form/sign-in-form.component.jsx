@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
+import { signInAuthUserWithEmailAndPassword, signInWithGooglePopup } from "../../utils/firebase/firebase.utils";
 import Button from "../button/button.component";
 import FormInput from "../form-input/form-input.component";
+
 import "./sign-in-form.styles.scss";
+
 
 
 const defaultFormFields = {
@@ -11,6 +13,7 @@ const defaultFormFields = {
 }
 
 const SignInForm = () => {
+
     const [formFields, setFormField] = useState(defaultFormFields);
     const { email, password, } = formFields;
 
@@ -26,21 +29,19 @@ const SignInForm = () => {
     const submitLoginForm = async (event) => {
         event.preventDefault();
         try {
-            const response = await signInAuthUserWithEmailAndPassword(email, password);
-           
-            console.log(response)
+            await signInAuthUserWithEmailAndPassword(email, password);
+
             resetFormField();
         } catch (error) {
-            if(error.message === 'Email Not Found') return alert('Invalid Email');
-            if(error.message === 'Wrong Password') return alert('Incorrect Password');
+            if (error.message === 'Email Not Found') return alert('Invalid Email');
+            if (error.message === 'Wrong Password') return alert('Incorrect Password');
         }
 
     }
 
     const signInWithGoogle = async () => {
         try {
-            const { user } = await signInWithGooglePopup();
-            createUserDocumentFromAuth(user)
+            await signInWithGooglePopup();
         } catch (error) {
             console.error(error.message, 'signInWithGoogle')
         }

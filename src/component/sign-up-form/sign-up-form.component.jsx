@@ -4,6 +4,7 @@ import FormInput from "../form-input/form-input.component";
 import "./sign-up-form.styles.scss";
 import Button from "../button/button.component";
 
+
 const defaultFormFields = {
     displayName: '',
     email: '',
@@ -15,6 +16,7 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields, setFormField] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
+
 
     const resetFormField = () => {
         setFormField(defaultFormFields);
@@ -31,11 +33,11 @@ const SignUpForm = () => {
             if (password !== confirmPassword) return;
 
             const { user } = await createAuthUserWithEmailAndPassword(email, password);
-            //    console.log(user)
-           await createUserDocumentFromAuth({ ...user, displayName });
-           resetFormField()
+            await createUserDocumentFromAuth({ ...user, displayName });
+            resetFormField()
+
         } catch (error) {
-         
+
             if (error.code === 'auth/email-already-in-use') alert('Email already in use')
             else console.log(error.message, 'handleSubmit')
         }
@@ -52,7 +54,7 @@ const SignUpForm = () => {
                 <FormInput label='Email' type="email" name="email" value={email} onChange={handleChange} required />
                 <FormInput label='Password' type="password" name="password" value={password} onChange={handleChange} required />
                 <FormInput label='Confirm Password' type="password" name="confirmPassword" value={confirmPassword} onChange={handleChange} required />
-            
+
                 <Button text='Sign Up' type="submit" />
             </form>
         </div>
