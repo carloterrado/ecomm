@@ -10,6 +10,7 @@ const CartDropdown = () => {
 
     const goTo = useNavigate();
     const handleCheckout = () => goTo('/checkout');
+    const handleGoToShop = () => goTo('/shop');
 
     return (
         <div className="cart-dropdown-container">
@@ -23,9 +24,12 @@ const CartDropdown = () => {
                             <Button text='Checkout' onClick={handleCheckout} />
                         </>
                     ) : (
-                        <h3 className="empty-message">
-                            No items in the car
-                        </h3>
+                        <>
+                            <h3 className="empty-message">
+                                No items in the car
+                            </h3>
+                            <Button text='Shop Now' onClick={handleGoToShop} />
+                        </>
                     )
             }
         </div>

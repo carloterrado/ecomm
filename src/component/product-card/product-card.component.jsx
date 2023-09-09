@@ -3,6 +3,7 @@ import Button from "../button/button.component";
 import "./product-card.styles.scss";
 import { CartContext } from "../../contexts/cart-context.component";
 
+
 const ProductCard = ({ product }) => {
     const { name, price, imageUrl } = product;
     const { addItemToCart } = useContext(CartContext)

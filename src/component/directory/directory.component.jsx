@@ -7,7 +7,7 @@ const Directory = () => {
         {
             "id": 1,
             "title": "hats",
-            "imageUrl": "https://i.ibb.co/cvpntL1/hats.png"
+            "imageUrl": "https://i.ibb.co/cvpntL1/hats.png",
         },
         {
             "id": 2,
