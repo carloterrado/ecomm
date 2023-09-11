@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
-import { createAction } from "../utils/firebase/reducer/reducer.utils";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 
 const checkProductToAdd = (cartItems, productToAdd) => {
@@ -39,11 +39,11 @@ export const CART_ACTION_TYPES = {
 }
 
 const cartReducer = (state, action) => {
-    const { types, payload } = action;
-    console.log(types, payload)
+    const { type, payload } = action;
+   
 
 
-    switch (types) {
+    switch (type) {
         case CART_ACTION_TYPES.SET_CART_ITEMS:
             return {
                 ...state,
@@ -55,7 +55,7 @@ const cartReducer = (state, action) => {
                 isCartOpen: payload
             }
         default:
-            throw new Error(`Invalid action types: ${types} from Cart Reducer`)
+            throw new Error(`Invalid action types: ${type} from Cart Reducer`)
     }
 }
 
