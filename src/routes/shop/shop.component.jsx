@@ -4,6 +4,9 @@ import "./shop.styles.scss";
 
 import CategoriesPreview from "../categories-preview/categories.component";
 import Category from "../category/category.component";
+import { useEffect } from "react";
+import { fetchCategoriesAsync} from "../../store/categories/categories.action";
+import { useDispatch } from "react-redux";
 
 
 
@@ -11,6 +14,11 @@ import Category from "../category/category.component";
 
 
 const Shop = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchCategoriesAsync());
+    }, [])
     
     return (
         <Routes >
