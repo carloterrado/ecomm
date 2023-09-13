@@ -54,7 +54,6 @@ export const addCollectionsAndDocuments = async (
     batch.set(docRef, object);
   });
   await batch.commit();
-  console.log("done");
 };
 
 export const getCollectionsAndDocument = async () => {
@@ -64,9 +63,7 @@ export const getCollectionsAndDocument = async () => {
   
   const categoryArray = querySnapshots.docs.map(docSnapshot => docSnapshot.data());
 
-
   return categoryArray;
-  // console.log('Snapshots', querySnapshots.docs[0].data())
 };
 
 export const createUserDocumentFromAuth = async (userAuth) => {
@@ -119,6 +116,6 @@ export const signOutUser = async () => await signOut(auth);
 
 export const onAuthStateChangedListener = (callback) => {
   const authStatus = onAuthStateChanged(auth, callback);
-  // console.log(authStatus)
+
   return authStatus;
 };

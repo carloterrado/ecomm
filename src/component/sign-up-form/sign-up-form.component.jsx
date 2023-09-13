@@ -44,7 +44,6 @@ const SignUpForm = () => {
 
 
     }
-    // console.log(formFields)
     return (
         <div className="sign-up-container">
             <h2>Don't have an Account?</h2>

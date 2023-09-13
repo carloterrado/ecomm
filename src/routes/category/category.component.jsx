@@ -8,14 +8,12 @@ import { selectCategories } from "../../store/categories/categories.selector";
 
 const Category = () => {
 
-    console.log('render/re-redering category component')
     const { category } = useParams();
     const categories = useSelector(selectCategories);
     const [products, setProducts] = useState([]);
 
 
     useEffect(() => {
-        console.log('effect fired call setProduct')
         setProducts(categories[category])
     }, [category, categories]);
 
