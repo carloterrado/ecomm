@@ -2,13 +2,13 @@ import { createSelector } from "reselect";
 
 const selectCategoriesReducer = (state) => state.categories;
 
-export const selectCategoriesMap = createSelector(
+export const selectCategoriesSlice = createSelector(
   [selectCategoriesReducer],
   (categoriesSlice) => categoriesSlice.categories
 );
 
 export const selectCategories = createSelector(
-  [selectCategoriesMap],
+  [selectCategoriesSlice],
   (categories) =>
     categories.reduce((acc, category) => {
       const { title, items } = category;
