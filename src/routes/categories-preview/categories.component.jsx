@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import CategoryPreview from "../../component/category-preview/category-preview.component";
-import { selectCategories } from "../../store/categories/categories.selector";
+import { selectCategories, selectCategoriesIsLoading } from "../../store/categories/categories.selector";
+import Spinner from "../../component/spinner/spinner.component";
 
 
 
@@ -9,15 +10,18 @@ import { selectCategories } from "../../store/categories/categories.selector";
 
 
 const CategoriesPreview = () => {
-const categories = useSelector(selectCategories);
-// const categories = [];
+    const categories = useSelector(selectCategories);
+    const isLoading = useSelector(selectCategoriesIsLoading);
+    // const categories = [];
 
     return (
         <div className="shop-container">
-            {Object.keys(categories).map((title, i) => {
-                const products = categories[title];
-                return (<CategoryPreview key={i} title={title} products={products} />);
-            })}
+            {
+                isLoading ? <Spinner /> : Object.keys(categories).map((title, i) => {
+                    const products = categories[title];
+                    return (<CategoryPreview key={i} title={title} products={products} />);
+                })
+            }
         </div >
 
     );

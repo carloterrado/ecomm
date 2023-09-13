@@ -1,0 +1,53 @@
+#cool-loader {
+	position: fixed;
+	inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	overflow: hidden;
+	color: rgba(30, 30, 30, 1);
+
+
+	.react-spinner-loader-svg {
+		position: relative;
+		margin: 0 auto;
+		width: 128px;
+		text-align: center;
+        font-weight: bolder;
+	}
+
+	.react-spinner-loader-svg svg {
+	-webkit-transform-origin: 50% 65%;
+				transform-origin: 50% 65%;
+	}
+
+	.react-spinner-loader-svg svg polygon {
+		stroke-dasharray: 17;
+		-webkit-animation: dash 2.5s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
+					animation: dash 2.5s cubic-bezier(0.35, 0.04, 0.63, 0.95) infinite;
+	}
+
+	@-webkit-keyframes dash {
+		to {
+			stroke-dashoffset: 136;
+		}
+	}
+
+	@keyframes dash {
+		to {
+			stroke-dashoffset: 136;
+		}
+	}
+	@-webkit-keyframes rotate {
+		100% {
+			-webkit-transform: rotate(360deg);
+						transform: rotate(360deg);
+		}
+	}
+	@keyframes rotate {
+		100% {
+			-webkit-transform: rotate(360deg);
+						transform: rotate(360deg);
+		}
+	}
+}
